@@ -1,14 +1,3 @@
-//✨global variables✨
-
-//✨buttons✨
-var button = document.querySelector(".button");
-
-//✨variables✨
-affirmationButton = document.getElementById("affirmation-radio");
-mantraButton = document.getElementById("mantra-radio");
-
-
-
 var affirmations = [
 "I forgive myself and set myself free.",
 "I believe I can be all that I want to be.",
@@ -23,7 +12,7 @@ var affirmations = [
 "Every day I am getting healthier and stronger.",
 "I honor my body by trusting the signals that it sends me.",
 "I manifest perfect health by making smart choices.",
-]
+];
 
 var mantras = [
 "Breathing in, I send myself love. Breathing out, I send love to someone else who needs it.",
@@ -41,29 +30,50 @@ var mantras = [
 "The only constant is change.",
 "Onward and upward.",
 "I am the sky, the rest is weather.",
-]
+];
+
+//✨global variables✨
+
+//✨buttons✨
+var button = document.querySelector(".button");
+var affirmationButton = document.getElementById("affirmation-radio");
+var mantraButton = document.getElementById("mantra-radio");
+
+//✨variables/querySelectors✨
+
+var svgImage = document.querySelector('svg');
+var quoteDisplay = document.querySelector(".icon-text-display");
+var message = document.querySelector('.message');
+var errorMessage = document.querySelector('.error-message');
+var clearMessage = document.querySelector('.clear-message');
 
 //✨event listeners✨
-
-button.addEventListener('click', radioButtonSelction)
+button.addEventListener('click', radioButtonSelection);
 
 
 //✨functions & event handlers✨
-//if affirmations radio is selected pull from affirmations array
-//if mantra radio is selected pull from mantras arary
 function getRandomIndex(array) {
     return Math.floor(Math.random() * array.length);
 };
 
+function radioButtonSelection() {
+  if (affirmationButton.checked === true) {
+    console.log("The if affirmation is working.")
+    message.innerText = affirmations[getRandomIndex(affirmations)];
+    svgImage.classList.add('hidden')
+    message.classList.remove('hidden');
+    errorMessage.classList.add('hidden');
+    
 
-function radioButtonSelction() {
-  if (document.getElementById("affirmation-radio").checked){
-    innerHTML.icon-text-display
-    /*return*/ affirmations[getRandomIndex(affirmations)];
+  } else if (mantraButton.checked === true) {
+    console.log("The if mantra is working.")
+    message.innerText = mantras[getRandomIndex(mantras)];
+    svgImage.classList.add('hidden')
+    message.classList.remove('hidden');
+    errorMessage.classList.add('hidden');
+  } else{
+    errorMessage.innerText = "Please select either affirmation or mantra."
+    errorMessage.classList.remove('hidden');
+    }
 
-  } else if (mantraButton.checked) {
-
-  } else {
-    return "Please make a selection";
   }
-}

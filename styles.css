@@ -40,7 +40,9 @@ h4 {
   margin: auto;
 }
 
-
+.hidden {
+  display: none!important;
+}
 
 /* section {
   background-color: #ffffff;
@@ -70,6 +72,9 @@ input {
 }
 
 input[type="radio"]{
+  /* display: flex;
+  align-items: center; */
+
   margin: 0 20px 0 30px;
 }
 
@@ -81,7 +86,7 @@ div {
   padding-top: 75px;
 }
 
-article {
+section {
   background-color: #ffffff;
   radius: 100px;
   width: 60%;
@@ -90,7 +95,7 @@ article {
   border-radius: 10px;
 }
 
-article.message-selection {
+section.message-selection {
   width: 40%;
   padding:
 }
