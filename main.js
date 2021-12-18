@@ -35,21 +35,21 @@ var mantras = [
 //✨global variables✨
 
 //✨buttons✨
-var button = document.querySelector(".button");
-var affirmationButton = document.getElementById("affirmation-radio");
-var mantraButton = document.getElementById("mantra-radio");
+var receiveButton = document.querySelector('.button');
+var affirmationButton = document.querySelector('#affirmation-radio');
+var mantraButton = document.querySelector('#mantra-radio');
+var clearButton = document.querySelector('#clearMsgButton');
 
 //✨variables/querySelectors✨
-
 var svgImage = document.querySelector('svg');
-var quoteDisplay = document.querySelector(".icon-text-display");
 var message = document.querySelector('.message');
 var errorMessage = document.querySelector('.error-message');
-var clearMessage = document.querySelector('.clear-message');
+// var clearMessage = document.getElementById('clearMsgButton');
+
 
 //✨event listeners✨
-button.addEventListener('click', radioButtonSelection);
-
+receiveButton.addEventListener('click', radioButtonSelection);
+clearButton.addEventListener('click', clearMessage);
 
 //✨functions & event handlers✨
 function getRandomIndex(array) {
@@ -58,22 +58,61 @@ function getRandomIndex(array) {
 
 function radioButtonSelection() {
   if (affirmationButton.checked === true) {
-    console.log("The if affirmation is working.")
     message.innerText = affirmations[getRandomIndex(affirmations)];
-    svgImage.classList.add('hidden')
-    message.classList.remove('hidden');
-    errorMessage.classList.add('hidden');
-    
+    hideImage();
+    showMessage();
+    hideErrorMessage();
+    showClearButton();
 
   } else if (mantraButton.checked === true) {
-    console.log("The if mantra is working.")
     message.innerText = mantras[getRandomIndex(mantras)];
-    svgImage.classList.add('hidden')
-    message.classList.remove('hidden');
-    errorMessage.classList.add('hidden');
-  } else{
-    errorMessage.innerText = "Please select either affirmation or mantra."
-    errorMessage.classList.remove('hidden');
-    }
+    hideImage();
+    showMessage();
+    hideErrorMessage();
+    showClearButton();
 
+  } else{
+    errorMessage.innerText = "⬆️ Please select either 'affirmation' or 'mantra' above. ⬆️ "
+    showErrorMessage();
+  }
+}
+
+function clearMessage() {
+    showImage();
+    hideClearButton();
+    hideErrorMessage();
+    hideMessage();
+  }
+
+
+function showImage() {
+    svgImage.classList.remove('hidden');
+}
+
+  function hideImage() {
+    svgImage.classList.add('hidden');
+  }
+
+  function showMessage() {
+    message.classList.remove('hidden');
+  }
+
+  function hideMessage() {
+    message.classList.add('hidden');
+  }
+
+  function hideErrorMessage() {
+    errorMessage.classList.add('hidden');
+  }
+
+  function showErrorMessage() {
+    errorMessage.classList.remove('hidden');
+  }
+
+    function showClearButton() {
+    clearButton.classList.remove('hidden');
+  }
+
+  function hideClearButton() {
+    clearButton.classList.add('hidden');
   }
