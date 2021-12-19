@@ -32,8 +32,6 @@ var mantras = [
 "I am the sky, the rest is weather.",
 ];
 
-//✨global variables✨
-
 //✨buttons✨
 var receiveButton = document.querySelector('.button');
 var affirmationButton = document.querySelector('#affirmation-radio');
@@ -41,31 +39,29 @@ var mantraButton = document.querySelector('#mantra-radio');
 var clearButton = document.querySelector('#clearMsgButton');
 
 //✨variables/querySelectors✨
-var svgImage = document.querySelector('svg');
+var svgImage = document.querySelector('img');
 var message = document.querySelector('.message');
 var errorMessage = document.querySelector('.error-message');
-// var clearMessage = document.getElementById('clearMsgButton');
-
 
 //✨event listeners✨
-receiveButton.addEventListener('click', radioButtonSelection);
+receiveButton.addEventListener('click', displayAffirmationOrMantra);
 clearButton.addEventListener('click', clearMessage);
 
 //✨functions & event handlers✨
-function getRandomIndex(array) {
+function getRandomIndexIn(array) {
     return Math.floor(Math.random() * array.length);
 };
 
-function radioButtonSelection() {
+function displayAffirmationOrMantra() {
   if (affirmationButton.checked === true) {
-    message.innerText = affirmations[getRandomIndex(affirmations)];
+    message.innerText = affirmations[getRandomIndexIn(affirmations)];
     hideImage();
     showMessage();
     hideErrorMessage();
     showClearButton();
 
   } else if (mantraButton.checked === true) {
-    message.innerText = mantras[getRandomIndex(mantras)];
+    message.innerText = mantras[getRandomIndexIn(mantras)];
     hideImage();
     showMessage();
     hideErrorMessage();
@@ -84,7 +80,7 @@ function clearMessage() {
     hideMessage();
   }
 
-
+//✨functions (continued) - functions to be used to clarify 3 previous functions
 function showImage() {
     svgImage.classList.remove('hidden');
 }
